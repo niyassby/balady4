@@ -23,7 +23,7 @@ export const addDocs = async (data) => {
   
     if (search) {
       // filter by name or email
-      query = query.or(`name.ilike.%${search}%`);
+      query = query.or(`name.ilike.%${search}%,idNumber.ilike.%${search}%`);
     }
   
     const { data, error, count } = await query;

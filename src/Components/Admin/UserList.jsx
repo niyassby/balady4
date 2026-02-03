@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, {  useEffect, useState } from "react";
 import PopUp from "../Users/popUp";
 import { HiOutlineDownload, HiX, HiOutlineInformationCircle, } from "react-icons/hi";
 import Edit from "../Users/Edit";
@@ -22,7 +22,10 @@ function UserList({ search }) {
     setQrCode(true);
     setQrId(id);
   };
-
+  
+  useEffect(()=>{
+    if(search) setPage(1)
+  }, [search])
 
   const handleEdit = (value) => {
     setOpenEdit(true)

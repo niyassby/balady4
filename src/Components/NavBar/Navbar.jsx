@@ -3,6 +3,7 @@ import { LuAlignJustify } from "react-icons/lu";
 import { IoIosArrowDown, IoMdArrowDropdown } from "react-icons/io";
 import { BsLink } from "react-icons/bs";
 import logo from "../../assets/Image/logoWhite.svg";
+import logo2 from "../../assets/Image/logo.svg";
 import { menuData } from "../../Context/Utils/menuItem";
 import { RiSettings4Fill } from "react-icons/ri";
 import { HiOutlineSearch } from "react-icons/hi";
@@ -142,7 +143,7 @@ function Navbar() {
             ))}
           </ul>
           <a className="max-lg:hidden" href="https://balady.gov.sa/ar">
-            <img dir="rtl" className="w-[100px] text-main-600" src={`https://balady.gov.sa/themes/custom/balady_new/logo.svg`} alt="الرئيسية" />
+            <img dir="rtl" className="w-[100px] text-main-600" src={logo2} alt="الرئيسية" />
           </a>
         </div>
       </div>
@@ -209,7 +210,7 @@ function Navbar() {
             <LuAlignJustify size={30} color="#fff" />
           </button>
           <a className="lg:hidden" href="https://balady.gov.sa/ar">
-            <img dir="rtl" className="w-[110px] text-main-700 "  src={`https://balady.gov.sa/themes/custom/balady_new/logo.svg`} alt="الرئيسية" />
+            <img dir="rtl" className="w-[110px] text-main-700 "  src={logo2} alt="الرئيسية" />
           </a>
         </div>
         <div className="mt-8"

@@ -180,6 +180,7 @@ function Users() {
                     </option>
                       <option value="annual">شهادة صحية سنوية</option>
                       <option value="standard">شهادة صحية الموحدة</option>
+                      <option value="commercial">شهادة صحية للأنشطة التجارية</option>
                       <option value="health">شهادة صحية</option>
                     </select>
                     

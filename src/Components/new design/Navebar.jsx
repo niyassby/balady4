@@ -31,37 +31,37 @@ function Navebar() {
         // PRINT BUTTON
         // ================================
         const handlePrint = (e) => {
-          if (e.target.closest('.print-page')) {
-            e.preventDefault()
-            window.print()
-          }
+            if (e.target.closest('.print-page')) {
+                e.preventDefault()
+                window.print()
+            }
         }
-    
+
         // ================================
         // BOOKMARK ALERT
         // ================================
         const handleBookmark = (e) => {
-          if (e.target.closest('.bookmark-page')) {
-            alert("يمكنك إضافة هذه الصفحة إلى الإشارات المرجعية الخاصة بك عن طريق الضغط على CTRL + D")
-          }
+            if (e.target.closest('.bookmark-page')) {
+                alert("يمكنك إضافة هذه الصفحة إلى الإشارات المرجعية الخاصة بك عن طريق الضغط على CTRL + D")
+            }
         }
-    
-    
+
+
         // ================================
         // ADD EVENTS
         // ================================
         document.addEventListener('click', handlePrint)
         document.addEventListener('click', handleBookmark)
-    
+
         // ================================
         // CLEANUP (IMPORTANT)
         // ================================
         return () => {
-          document.removeEventListener('click', handlePrint)
-          document.removeEventListener('click', handleBookmark)
+            document.removeEventListener('click', handlePrint)
+            document.removeEventListener('click', handleBookmark)
         }
-    
-      }, [])
+
+    }, [])
     return (
         <div dir='rtl' className='ibm-plex-sans-arabic font-medium'>
             <div className='bg-[#F3F4F6] text-[#161616] w-full md:h-[40px] h-[1 24px] gap-2 flex max-md:flex-col items-center md:justify-between px-4'>
@@ -158,16 +158,16 @@ function Navebar() {
                 </div>
             </div>
             <div className={` ${showDigitalStamp ? "max-h-[700px]" : "max-h-0"} transition-all duration-700 ease-in-out overflow-hidden `}>
-                <div class="digital-stamp-container w-full bg-[#F3F4F6] border-b px-6 py-7">
+                <div className="digital-stamp-container w-full bg-[#F3F4F6] border-b px-6 py-7">
                     <div >
-                        <div class="digital-stamp-content ">
-                            <div class="grid md:grid-cols-2 gap-3 ">
-                                <div class="col-md-6">
-                                    <div class="ds-content_item">
-                                        <div class="ds-content_item_icon">
+                        <div className="digital-stamp-content ">
+                            <div className="grid md:grid-cols-2 gap-3 ">
+                                <div className="col-md-6">
+                                    <div className="ds-content_item">
+                                        <div className="ds-content_item_icon">
                                             <Link04Icon size={18} strokeWidth={1.5} />
                                         </div>
-                                        <div class="ds-content_item_content">
+                                        <div className="ds-content_item_content">
                                             <h2>روابط المواقع الالكترونية الرسمية السعودية
                                                 تنتهي<span>&nbsp;.gov.sa</span>&nbsp;
                                             </h2>
@@ -177,12 +177,12 @@ function Navebar() {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="ds-content_item">
-                                        <div class="ds-content_item_icon">
+                                <div className="col-md-6">
+                                    <div className="ds-content_item">
+                                        <div className="ds-content_item_icon">
                                             <SquareLockPasswordIcon size={18} strokeWidth={1.5} />
                                         </div>
-                                        <div class="ds-content_item_content">
+                                        <div className="ds-content_item_content">
                                             <h2>المواقع الالكترونية الحكومية تستخدم
                                                 بروتوكول<span>&nbsp;HTTPS</span>&nbsp;للتشفير و
                                                 الأمان.</h2>
@@ -194,18 +194,18 @@ function Navebar() {
                                 </div>
                             </div>
                         </div>
-                        <div class="digital-stamp-footer">
-                            <div class="row g-3">
-                                <div class="col-md-12">
-                                    <div class="ds-footer_item">
-                                        <div class="ds-footer_item_icon">
+                        <div className="digital-stamp-footer">
+                            <div className="row g-3">
+                                <div className="col-md-12">
+                                    <div className="ds-footer_item">
+                                        <div className="ds-footer_item_icon">
                                             <img src={dsfootericon} alt="" />
                                         </div>
-                                        <div class="ds-footer_item_content">
+                                        <div className="ds-footer_item_content">
                                             <p> مسجل لدى هيئة الحكومة الرقمية برقم:</p>
                                             <a href="https://raqmi.dga.gov.sa/platforms/DigitalStamp/ShowCertificate/316"
-                                                class="ds-footer_link">
-                                                <span class="link__label">20250428339 </span><LinkSquare02Icon size={18} strokeWidth={1.5} />
+                                                className="ds-footer_link">
+                                                <span className="link__label">20250428339 </span><LinkSquare02Icon size={18} strokeWidth={1.5} />
                                             </a>
                                         </div>
                                     </div>

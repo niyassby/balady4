@@ -2,11 +2,15 @@ import React, { useState } from 'react'
 import { obj } from '../../Context/Utils/Utils';
 import Spinner from '../Loading/Spinner';
 import { IoMdClose } from "react-icons/io";
+import { HiOutlineTrash } from "react-icons/hi2";
 import { useUpdateDocument } from '../../hooks/useMutation';
+import { deleteFileByUrl, uploadFile } from '../../Context/API';
+import ImageUpload from './ImageUpload';
 
 function Edit({isEdit, setEdit, setOpenEdit}) {
 
     const [loadingUp, setLoadingUp]=useState(false)
+    const [profile, setProfile] = useState(null)
     const {mutate, isPending}=useUpdateDocument()
 
     const handleChange = (e) => {
@@ -21,18 +25,51 @@ function Edit({isEdit, setEdit, setOpenEdit}) {
       }
       
 
+      const handleDeleteImage = async () => {
+        if (!isEdit.url) return;
+        if (window.confirm("Are you sure you want to delete this image?")) {
+          setLoadingUp(true);
+          const success = await deleteFileByUrl(isEdit.url);
+          if (success) {
+            setEdit({ ...isEdit, url: "" });
+          } else {
+            alert("Failed to delete the image from storage.");
+            // Fallback: still clear the url so they can upload a new one
+            // setEdit({ ...isEdit, url: "" });
+          }
+          setLoadingUp(false);
+        }
+      };
+
       const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoadingUp(true)
-        const id = isEdit.id
-        delete isEdit.id
-        mutate({id, data:isEdit}, {
-          onSuccess: (data) => {
-            
-            handleCancel()
+        setLoadingUp(true);
+        try {
+          let finalUrl = isEdit.url;
+          if (profile) {
+            const imageUrl = await uploadFile(profile);
+            if (!imageUrl) {
+              alert("Failed to upload new image.");
+              setLoadingUp(false);
+              return;
+            }
+            finalUrl = imageUrl;
           }
-        })
-        setLoadingUp(false)
+
+          const id = isEdit.id;
+          const dataToUpdate = { ...isEdit, url: finalUrl };
+          delete dataToUpdate.id;
+
+          mutate({id, data: dataToUpdate}, {
+            onSuccess: (data) => {
+              handleCancel();
+            }
+          });
+        } catch (err) {
+          console.error(err);
+        } finally {
+          setLoadingUp(false);
+        }
       };
 
   
@@ -50,9 +87,24 @@ function Edit({isEdit, setEdit, setOpenEdit}) {
             {/* Form  */}
 
             <div >
-                <div className='w-full h-full flex flex-col items-center justify-center text-center'>
-                    <img className='w-36 aspect-[3/4] overflow-hidden object-cover rounded-lg' src={isEdit.url} alt="" />
-                    <h1 className='text-xs max-w-72 mt-1 text-red-500'>To update the image, you need to remove the existing document and add a new one</h1>
+                <div className='w-full h-full flex flex-col items-center justify-center text-center mb-6'>
+                    {isEdit.url ? (
+                        <div className='flex flex-col items-center justify-center'>
+                            <img className='w-36 aspect-[3/4] overflow-hidden object-cover rounded-lg border shadow-sm' src={isEdit.url} alt="" />
+                            <button
+                                type="button"
+                                onClick={handleDeleteImage}
+                                className='mt-3 flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg shadow-sm transition duration-200 cursor-pointer'
+                            >
+                                <HiOutlineTrash size={16} />
+                                Delete Image
+                            </button>
+                        </div>
+                    ) : (
+                        <div className='w-full max-w-md'>
+                            <ImageUpload profile={profile} setProfile={setProfile} />
+                        </div>
+                    )}
                 </div>
                 <div dir="rtl" className='grid grid-cols-1 md:grid-cols-2 gap-3 gap-y-10 mt-10'>
                     {obj.map((item, index)=>{
@@ -91,7 +143,7 @@ function Edit({isEdit, setEdit, setOpenEdit}) {
         
         </div>
         </div>
-        {loadingUp || isPending && <Spinner></Spinner>}
+        {(loadingUp || isPending) && <Spinner></Spinner>}
     </div>
   )
 }

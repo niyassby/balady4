@@ -32,10 +32,12 @@ function UserList({ search }) {
     setEdit(value)
   };
 
-  const handleDelete = (item) => {
+  const handleDelete = async (item) => {
     mutate(item.id, {
-      onSuccess: () => {
-        deleteFileByUrl(item.url)
+      onSuccess: async () => {
+        if(item.url){
+          await deleteFileByUrl(item.url)
+        }
         setDlt(null);
       }
     })

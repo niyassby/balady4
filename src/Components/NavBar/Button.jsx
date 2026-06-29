@@ -4,10 +4,10 @@ function Button() {
   return (
     <div className="fixed z-50 bottom-0 right-0 m-4 ">
       <div
-        // class="bg-[#006cf2] flex items-center justify-center rounded-full w-16 h-16 "
+      // className="bg-[#006cf2] flex items-center justify-center rounded-full w-16 h-16 "
       >
         <button
-        className="bg-[#006cf2] flex hover:bg-white text-white transition-all duration-500  hover:text-[#006cf2] items-center justify-center rounded-full w-16 h-16 "
+          className="bg-[#006cf2] flex hover:bg-white text-white transition-all duration-500  hover:text-[#006cf2] items-center justify-center rounded-full w-16 h-16 "
         >
           <span >
             <svg

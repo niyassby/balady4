@@ -1,9 +1,8 @@
 import { supabase } from "./supabaseClient"
 
 export const addDocs = async (data) => {
-  console.log(data);
     const { error } = await supabase
-      .from('users')
+      .from('balady4')
       .insert([
         data
       ])
@@ -16,7 +15,7 @@ export const addDocs = async (data) => {
     const to = from + limit - 1;
   
     let query = supabase
-      .from("users")
+      .from("balady4")
       .select("*", { count: "exact" })
       .order("created_at", { ascending: false })
       .range(from, to);
@@ -67,7 +66,7 @@ export const addDocs = async (data) => {
 
 export const updateUser = async (id, updates) => {
   const { data, error } = await supabase
-    .from("users") // table name
+    .from("balady4") // table name
     .update(updates) // pass object with new values
     .eq("id", id)   // match row to update
     .select();      // return updated rows (optional)
@@ -82,7 +81,7 @@ export const updateUser = async (id, updates) => {
 
 export const findUserById = async (id) => {
   const { data, error } = await supabase
-    .from("users")
+    .from("balady4")
     .select("*")
     .eq("id", id)  // match by ID
     .single();     // ✅ return only one row
@@ -97,7 +96,7 @@ export const findUserById = async (id) => {
 
 export const deleteUser = async (id) => {
   const { error } = await supabase
-    .from('users')
+    .from('balady4')
     .delete()
     .eq('id', id)
   

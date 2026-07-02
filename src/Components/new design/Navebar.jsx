@@ -66,11 +66,13 @@ function Navebar() {
         <div dir='rtl' className='ibm-plex-sans-arabic font-medium'>
             <div className='bg-[#F3F4F6] text-[#161616] w-full md:h-[40px] h-[1 24px] gap-2 flex max-md:flex-col items-center md:justify-between px-4'>
                 <div className="flex text-[14px] max-md:flex-col pt-2 md:py-0 items-center  gap-3 max-md:w-full">
+                    <div className='flex items-center gap-2 max-md:w-full'>
                     <div className="digital-stamp-icon">
                         <img src={flag} alt="" />
                     </div>
                     <div className="digital-stamp-text">
                         <span>موقع حكومي مسجل لدى هيئة الحكومة الرقمية</span>
+                    </div>
                     </div>
                     <button onClick={() => setShowDigitalStamp(!showDigitalStamp)} className="text-[#166A45] flex items-end gap-2 digital-stamp-link max-md:w-full max-md:justify-end" >
                         كيف تتحقق <ArrowDown01Icon size={16} />

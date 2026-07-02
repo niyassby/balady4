@@ -1,8 +1,21 @@
-# React + Vite
+# Balady Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Repository Structure
 
-Currently, two official plugins are available:
+### Balady 3
+- **Branch**: `master`
+- **Remote**: `origin`
+- **URL**: `https://github.com/niyassby/balady-3.git`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Balady 4
+- **Branch**: `balady4`
+- **Remote**: `balady4`
+- **URL**: `https://github.com/niyassby/balady4.git`
+
+---
+
+## Setup Instructions
+
+### Clone Balady 3 (Master Branch)
+```bash
+git clone -b master origin https://github.com/niyassby/balady-3.git
